@@ -2,8 +2,16 @@ require('dotenv').config();
 const express = require("express");
 const connectDB = require("./config/db")
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
+
+//code for vercel deployment
+app.use(cors({
+  origin:"https://amazon-like-frontend.vercel.app", 
+  methods: ["POST", "GET", "DELETE", "PUT"],
+  credentials:true
+}));
 
 //connects to mongo
 connectDB();
